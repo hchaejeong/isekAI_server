@@ -26,26 +26,12 @@ export class UserEntity extends BaseEntity {
     email: string;
 
     @Column({
-        type: 'varchar'
-    })
-    @Exclude({
-        toPlainOnly: true,
-    })
-    password: string;
-
-    @Column({
-        default: false,
-    })
-    @Expose()
-    emailVerified: boolean;
-
-    @Column({
         type: 'varchar',
         length: 200,
         nullable: true,
     })
     @Expose()
-    profileIconUrl: string;
+    profileIconUrl?: string;
 
     @OneToMany(() => SeriesEntity, (series) => series.user)
     @Exclude({ toPlainOnly: true })
