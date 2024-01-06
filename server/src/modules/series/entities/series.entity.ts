@@ -1,6 +1,8 @@
 import { Exclude, Expose } from "class-transformer";
+import { BulletinEntity } from "src/modules/bulletin/entities/bulletin.entity";
+import { CharacterEntity } from "src/modules/character/entities/character.entity";
 import { UserEntity } from "src/modules/user/entities/user.entity";
-import { BaseEntity, Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { BaseEntity, Column, Entity, JoinColumn, ManyToOne, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity({
     name: 'series',
@@ -10,18 +12,26 @@ export class SeriesEntity extends BaseEntity {
     @Expose()
     id: string;
 
-    @ManyToOne(() => UserEntity)
-    @Exclude({ toPlainOnly: true })
-    user: UserEntity | null;
-
-    @Column()
+    @Column({
+        type: 'varchar',
+        length: 50,
+    })
     @Expose()
-    userId: string;
+    name: string;
 
     @Column({
         type: 'varchar',
         length: 500,
+        array: true,
     })
     @Expose()
-    summary: string;
+    summary: string[];
+
+    @OneToOne(() => BulletinEntity)
+    @JoinColumn({ name: 'bulletin_id '})
+    bulletin: BulletinEntity;
+
+    @OneToMany(() => CharacterEntity, (characters) => characters.series)
+    @Exclude({ toPlainOnly: true })
+    characters: CharacterEntity[] | null;
 }

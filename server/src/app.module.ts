@@ -8,6 +8,11 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { OauthModule } from './modules/oauth/oauth.module';
 import { DatabaseModule } from './modules/database';
 import { CacheModule } from '@nestjs/cache-manager';
+import { CharacterModule } from './modules/character/character.module';
+import { RelationshipModule } from './modules/relationship/relationship.module';
+import { BulletinModule } from './modules/bulletin/bulletin.module';
+import { PostModule } from './modules/post/post.module';
+import { CommentModule } from './modules/comment/comment.module';
 
 @Module({
   imports: [ConfigModule.forRoot({
@@ -17,6 +22,11 @@ import { CacheModule } from '@nestjs/cache-manager';
     DatabaseModule,
     UserModule, 
     SeriesModule, 
+    CharacterModule,
+    RelationshipModule,
+    BulletinModule,
+    PostModule,
+    CommentModule,
     OauthModule, 
     CacheModule.register({
       ttl: 10,
