@@ -738,6 +738,13 @@
     tslib "2.6.2"
     uid "2.0.2"
 
+"@nestjs/cqrs@^10.2.6":
+  version "10.2.6"
+  resolved "https://registry.npmjs.org/@nestjs/cqrs/-/cqrs-10.2.6.tgz"
+  integrity sha512-QB5D4MnPybYK0y/Md9UoAMt5by/EleFiLVELYtSm2rzKtAcrcYbc8IrmootKs4cqonxskrcdZliqFgtQF+TdjQ==
+  dependencies:
+    uuid "9.0.0"
+
 "@nestjs/jwt@^10.2.0":
   version "10.2.0"
   resolved "https://registry.npmjs.org/@nestjs/jwt/-/jwt-10.2.0.tgz"
@@ -4671,10 +4678,10 @@ rechoir@^0.6.2:
   dependencies:
     resolve "^1.1.6"
 
-reflect-metadata@^0.1.12, reflect-metadata@^0.1.13:
-  version "0.1.14"
-  resolved "https://registry.npmjs.org/reflect-metadata/-/reflect-metadata-0.1.14.tgz"
-  integrity sha512-ZhYeb6nRaXCfhnndflDK8qI6ZQ/YcWZCISRAWICW9XYqMUwjZM9Z0DveWX/ABN01oxSHwVxKQmxeYZSsm0jh5A==
+reflect-metadata@^0.1.12, reflect-metadata@^0.1.13, reflect-metadata@0.1.13:
+  version "0.1.13"
+  resolved "https://registry.npmjs.org/reflect-metadata/-/reflect-metadata-0.1.13.tgz"
+  integrity sha512-Ts1Y/anZELhSsjMcU605fU9RE4Oi3p5ORujwbIKXfWa+0Zxs510Qrmrce5/Jowq3cHSZSJqBjypxmHarc+vEWg==
 
 repeat-string@^1.6.1:
   version "1.6.1"

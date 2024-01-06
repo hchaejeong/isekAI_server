@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { UserRepository } from '../repository/user.repository';
 import { UserEntity } from '../entities/user.entity';
 
@@ -6,10 +6,20 @@ import { UserEntity } from '../entities/user.entity';
 export class UserService {
     constructor(private userRepository: UserRepository) {}
 
-    public async updateProfile(args: { id: string; name: string; profileIconUrl?: string }): Promise<string> {
-        const { id, name, profileIconUrl } = args;
+    public async updateProfile(args: { email: string; name: string; profileIconUrl?: string }): Promise<string> {
+        const { email, name, profileIconUrl } = args;
+
+        const user = await this.userRepository.findOne({
+          where: {
+            email,
+          }
+        });
+
+        if (!user) {
+          throw new UnauthorizedException();
+        }
     
-        await this.userRepository.update(id, {
+        await this.userRepository.update(user.id, {
           name,
           profileIconUrl,
         });
