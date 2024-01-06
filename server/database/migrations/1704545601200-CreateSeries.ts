@@ -1,11 +1,11 @@
-import { MigrationInterface, QueryRunner, Table } from "typeorm";
+import { MigrationInterface, QueryRunner, Table, TableForeignKey } from "typeorm";
 
-export class CreateUser1704527017981 implements MigrationInterface {
+export class CreateSeries1704545601200 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table({
-                name: 'user',
+                name: 'series',
                 columns: [
                   {
                     name: 'id',
@@ -20,16 +20,14 @@ export class CreateUser1704527017981 implements MigrationInterface {
                     length: '50',
                   },
                   {
-                    name: 'email',
+                    name: 'summary',
                     type: 'varchar',
-                    length: '255',
-                    isUnique: true,
+                    length: '500',
+                    isArray: true,
                   },
                   {
-                    name: 'profileIconUrl',
-                    type: 'varchar',
-                    length: '200',
-                    isUnique: true,
+                    name: 'bulletin_id',
+                    type: 'uuid',
                   },
                   {
                     name: 'created_at',
@@ -43,11 +41,23 @@ export class CreateUser1704527017981 implements MigrationInterface {
                   },
                 ],
               }),
-        )
+        );
+
+        await queryRunner.createForeignKeys('series', [
+            new TableForeignKey({
+                columnNames: ['bulletin_id'],
+                referencedColumnNames: ['id'],
+                referencedTableName: 'bulletin',
+                onDelete: 'CASCADE',
+            }),
+        ]);
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable('user');
+        const table = await queryRunner.getTable('series');
+        const foreignKeys = table?.foreignKeys.filter((fk) => fk.columnNames.indexOf('bulletin_id') != -1) || [];
+        await queryRunner.dropForeignKeys('series', foreignKeys);
+        await queryRunner.dropTable('series');
     }
 
 }
