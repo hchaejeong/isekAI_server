@@ -18,6 +18,7 @@ import { EnvironmentVariables } from 'src/config';
         username: configService.get('DATABASE_USERNAME'),
         password: configService.get('DATABASE_PASSWORD'),
         entities: [path.resolve(__dirname, '..', '**/*.entity{.ts,.js}')],
+        synchronize: true,
         //namingStrategy: new SnakeNamingStrategy(),
         // logging: configService.get('NODE_ENV', { infer: true }) !== 'production',
       }),
