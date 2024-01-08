@@ -52,9 +52,13 @@ export class SeriesEntity extends BaseEntity {
     @Exclude({ toPlainOnly: true })
     posts: PostEntity[] | null;
     
-    @ManyToMany(() => UserEntity)
-    @JoinTable({ name: 'user_series' })
-    user: UserEntity[] | null;
+    @ManyToOne(() => UserEntity, (user) => user.series)
+    @Exclude({ toPlainOnly: true })
+    user: UserEntity | null;
+
+    @Column()
+    @Expose()
+    userId: string;
 
     @OneToMany(() => CharacterEntity, (characters) => characters.series)
     @Exclude({ toPlainOnly: true })

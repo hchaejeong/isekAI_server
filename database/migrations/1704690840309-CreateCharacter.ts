@@ -40,6 +40,16 @@ export class CreateCharacter1704690840309 implements MigrationInterface {
                         type: 'uuid',
                         isNullable: false,
                     },
+                    {
+                        name: 'created_at',
+                        type: 'timestamp with time zone',
+                        default: 'now()',
+                    },
+                    {
+                        name: 'updated_at',
+                        type: 'timestamp with time zone',
+                        default: 'now()',
+                    },
                 ],
             }),
         );

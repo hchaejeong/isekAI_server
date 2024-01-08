@@ -12,6 +12,13 @@ export class CharacterEntity extends BaseEntity {
 
     @Column({
         type: 'varchar',
+        length: 10,
+    })
+    @Expose()
+    name: string;
+
+    @Column({
+        type: 'varchar',
         length: 50,
     })
     @Expose()

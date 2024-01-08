@@ -39,6 +39,16 @@ export class CreatePost1704689512290 implements MigrationInterface {
                         type: 'uuid',
                         isNullable: false,
                     },
+                    {
+                        name: 'created_at',
+                        type: 'timestamp with time zone',
+                        default: 'now()',
+                    },
+                    {
+                        name: 'updated_at',
+                        type: 'timestamp with time zone',
+                        default: 'now()',
+                    },
                 ],
             }),
         );

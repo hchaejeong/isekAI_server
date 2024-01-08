@@ -5,7 +5,7 @@ const appDataSource = new DataSource({
     host: "localhost",
     port: 5432,
     database: "isekai",
-    username: "postgres",
+    username: "isekai",
     password: "isekai",
     migrations: [__dirname + '/migrations/*{.ts,.js}'],
     uuidExtension: 'uuid-ossp',  

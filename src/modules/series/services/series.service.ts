@@ -18,13 +18,13 @@ export class SeriesService {
         return { series };
     }
 
-    async getTitles(args: { category: SeriesCategory }): Promise<string[]> {
+    async getAllSeries(args: { category: SeriesCategory }): Promise<SeriesEntity[]> {
         const { category } = args;
 
         const seriesEntities = await this.seriesRepository.find({
             where: { category },
         });
 
-        return seriesEntities.map((series) => series.name);
+        return seriesEntities;
     }
 }

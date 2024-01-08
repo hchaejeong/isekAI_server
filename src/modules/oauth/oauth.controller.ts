@@ -15,7 +15,7 @@ export class OauthController {
   @UseGuards(AuthGuard('google'))
   async googleLoginCallback(@Req() req) {
     const { email, firstName, lastName, profileIcon, accessToken } = req.user;
-    
+
     return this.oauthService.validateGoogleLogin(email, firstName, lastName, profileIcon, accessToken);
   }
 

@@ -33,10 +33,8 @@ constructor(@Inject(CACHE_MANAGER) private cacheManager: Cache, private userRepo
             name: firstName + lastName,
             profileIconUrl: profileIcon,
         });
-
-        return 'new user';
     }
-    return 'returning user';
+    return user;
   }
 
   public async handleGoogleLogin(req: Request) {

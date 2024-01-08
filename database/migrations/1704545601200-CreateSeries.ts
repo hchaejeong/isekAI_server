@@ -28,10 +28,16 @@ export class CreateSeries1704545601200 implements MigrationInterface {
                 },
                 {
                   name: 'category',
-                  type: 'varchar(100)',
+                  type: 'varchar',
+                  length: '100',
                 },
                 {
-                  name: 'bulletin_id',
+                  name: 'seriesImage',
+                  type: 'varchar',
+                  length: '500',
+                },
+                {
+                  name: 'userId',
                   type: 'uuid',
                 },
                 {
@@ -48,50 +54,22 @@ export class CreateSeries1704545601200 implements MigrationInterface {
             }),
       );
 
-      await queryRunner.createTable(
-        new Table({
-          name: 'user_series_series',
-          columns: [
-              {
-                  name: 'userId',
-                  type: 'uuid',
-                  isNullable: false,
-              },
-              {
-                  name: 'seriesId',
-                  type: 'uuid',
-                  isNullable: false,
-              },
-          ],
-          foreignKeys: [
-              {
-                  columnNames: ['userId'],
-                  referencedColumnNames: ['id'],
-                  referencedTableName: 'user',
-                  onDelete: 'CASCADE',
-              },
-              {
-                  columnNames: ['seriesId'],
-                  referencedColumnNames: ['id'],
-                  referencedTableName: 'series',
-                  onDelete: 'CASCADE',
-              },
-          ],
-          indices: [
-            {
-              columnNames: ['userId', 'seriesId'],
-              isUnique: true,
-            },
-          ],
-        }),
-      );
+      await queryRunner.createForeignKey('series', new TableForeignKey({
+        columnNames: ['userId'],
+        referencedColumnNames: ['id'],
+        referencedTableName: 'user',
+        onDelete: 'CASCADE',
+      }));
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
         const table = await queryRunner.getTable('series');
-        const foreignKeys = table?.foreignKeys.filter((fk) => fk.columnNames.indexOf('bulletin_id') != -1) || [];
-        await queryRunner.dropForeignKeys('series', foreignKeys);
-        await queryRunner.dropTable('user_series_series');
+        const userIdForeignKey = table?.foreignKeys.find(fk => fk.columnNames.indexOf('userId') !== -1);
+        
+        if (userIdForeignKey) {
+          await queryRunner.dropForeignKey('series', userIdForeignKey);
+        }
+        
         await queryRunner.dropTable('series');
     }
 

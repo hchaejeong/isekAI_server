@@ -35,8 +35,8 @@ export class UserEntity extends BaseEntity {
     @Expose()
     profileIconUrl?: string;
 
-    @ManyToMany(() => SeriesEntity)
-    @JoinTable({ name: 'user_series' })
+    @OneToMany(() => SeriesEntity, (series) => series.user)
+    @Exclude({ toPlainOnly: true })
     series: SeriesEntity[] | null;
 
     @OneToMany(() => PostEntity, (posts) => posts.user)

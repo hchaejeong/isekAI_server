@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param } from '@nestjs/common';
+import { Body, Controller, Get, Param, Query } from '@nestjs/common';
 import { SeriesService } from './services/series.service';
 import { GetAllTitlesResponseDto } from './dtos/get-all-titles.dto';
 import { GetSeriesInformationResponseDto } from './dtos/get-series-info-response.dto';
@@ -9,12 +9,12 @@ export class SeriesController {
   constructor(private readonly seriesService: SeriesService) {}
   
   @Get('/all')
-  public async getAllTitles(@Body() body: GetAllTitlesRequestDto): Promise<GetAllTitlesResponseDto> {
-    const { category } = body;
+  public async getAllSeries(@Query() query: GetAllTitlesRequestDto): Promise<GetAllTitlesResponseDto> {
+    const { category } = query;
 
-    const titles = await this.seriesService.getTitles({ category });
+    const allSeries = await this.seriesService.getAllSeries({ category });
 
-    return { titles };
+    return { allSeries };
   }
 
   @Get(':seriesId')
