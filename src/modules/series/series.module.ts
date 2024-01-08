@@ -6,7 +6,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { SeriesRepository } from './repositories/series.repository';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([SeriesRepository])],
+  imports: [TypeOrmModule.forFeature([SeriesEntity, SeriesRepository])],
   controllers: [SeriesController],
   providers: [SeriesService, SeriesRepository],
 })

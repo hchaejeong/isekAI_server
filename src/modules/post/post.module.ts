@@ -6,9 +6,10 @@ import { UserModule } from '../user';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { CqrsModule } from '@nestjs/cqrs';
 import { DatabaseModule } from '../database';
+import { PostEntity } from './entities/post.entity';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([PostRepository]), CqrsModule, DatabaseModule, UserModule],
+  imports: [TypeOrmModule.forFeature([PostEntity, PostRepository]), CqrsModule, DatabaseModule, UserModule],
   controllers: [PostController],
   providers: [PostService, PostRepository],
   exports: [PostService],

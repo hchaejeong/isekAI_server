@@ -4,10 +4,36 @@ import { CACHE_MANAGER } from '@nestjs/cache-manager';
 import { Cache } from 'cache-manager';
 import { v4 as uuidv4, validate as uuidValidate } from 'uuid';
 import { UserRepository } from '../user/repository/user.repository';
+import { OAuth2Client } from 'google-auth-library';
 
 @Injectable()
 export class OauthService {
-constructor(@Inject(CACHE_MANAGER) private cacheManager: Cache, private userRepository: UserRepository) {}
+constructor(@Inject(CACHE_MANAGER) private cacheManager: Cache, private userRepository: UserRepository, @Inject('GOOGLE_CLIENT_ID') private readonly googleClientId: string) {}
+
+  public async validateGoogleIdToken(idToken: string): Promise<any> {
+    const client = new OAuth2Client(this.googleClientId);
+
+    try {
+      const ticket = await client.verifyIdToken({
+        idToken,
+        audience: this.googleClientId,
+      });
+
+      const payload = ticket.getPayload();
+      const userInfo = {
+        email: payload.email,
+        firstName: payload.given_name,
+        lastName: payload.family_name,
+        profileIcon: payload.picture,
+        accessToken: idToken,
+      };
+
+      return userInfo;
+    } catch (error) {
+      console.error('Error validating Google ID token:', error.message);
+      throw new Error('Invalid Google ID token');
+    }
+  }
 
   public async validateGoogleLogin(email: string, firstName: string, lastName: string, profileIcon: string, accessToken: string) {
     // Validate or create a new user based on the Google profile    
@@ -34,6 +60,7 @@ constructor(@Inject(CACHE_MANAGER) private cacheManager: Cache, private userRepo
             profileIconUrl: profileIcon,
         });
     }
+    console.log(JSON.stringify(user));
     return JSON.stringify(user);
   }
 
@@ -51,6 +78,6 @@ constructor(@Inject(CACHE_MANAGER) private cacheManager: Cache, private userRepo
     //await this.handleDatabaseUser();
     
     console.log(googleUser);
-    return googleUser;
+    return (googleUser);
   }
 }

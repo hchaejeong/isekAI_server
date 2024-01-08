@@ -16,6 +16,11 @@ export class CreateCharacter1704690840309 implements MigrationInterface {
                         default: 'uuid_generate_v4()',
                     },
                     {
+                        name: 'name',
+                        type: 'varchar',
+                        length: '50',
+                    },
+                    {
                         name: 'introduced',
                         type: 'varchar',
                         length: '50',

@@ -13,6 +13,7 @@ export class SeriesService {
             where: {
                 id: seriesId,
             },
+            relations: ['characters'],
         });
 
         return { series };

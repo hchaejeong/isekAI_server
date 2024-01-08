@@ -1,4 +1,4 @@
-import { Controller, Get, Req, Res, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Post, Req, Res, UseGuards } from '@nestjs/common';
 import { Request } from 'express';
 import { OauthService } from './oauth.service';
 import { AuthGuard } from '@nestjs/passport';
@@ -11,12 +11,15 @@ export class OauthController {
   @UseGuards(AuthGuard('google'))
   async googleLogin() {}
 
-  @Get('google/redirect')
-  @UseGuards(AuthGuard('google'))
-  async googleLoginCallback(@Req() req) {
-    const { email, firstName, lastName, profileIcon, accessToken } = req.user;
+  @Post('google/verify')
+  async signInWithGoogle(@Body() { idToken }: { idToken: string }) {
+    // Validate the Google ID token and extract user information
+    const userInfo = await this.oauthService.validateGoogleIdToken(idToken);
 
-    return this.oauthService.validateGoogleLogin(email, firstName, lastName, profileIcon, accessToken);
+    // Process user information as needed
+    console.log(userInfo);
+
+    return userInfo;
   }
 
 }

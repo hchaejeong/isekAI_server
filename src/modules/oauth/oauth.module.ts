@@ -10,6 +10,6 @@ import { UserRepository } from '../user/repository/user.repository';
 @Module({
   imports: [PassportModule.register({ defaultStrategy: 'google' }), TypeOrmModule.forFeature([UserEntity])],
   controllers: [OauthController],
-  providers: [OauthService, GoogleStrategy, UserRepository],
+  providers: [OauthService, GoogleStrategy, UserRepository, { provide: 'GOOGLE_CLIENT_ID', useValue: process.env.OAUTH_GOOGLE_ID }],
 })
 export class OauthModule {}

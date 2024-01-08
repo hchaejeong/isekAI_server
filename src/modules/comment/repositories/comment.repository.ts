@@ -7,7 +7,7 @@ import { UserEntity } from "@src/modules/user";
 
 @Injectable()
 export class CommentRepository {
-    constructor(@InjectRepository(CommentRepository) private repository: Repository<CommentEntity>,) {}
+    constructor(@InjectRepository(CommentEntity) private repository: Repository<CommentEntity>,) {}
 
     create(args: { content: string, post: PostEntity, user: UserEntity }) {
         const { content, post, user } = args;

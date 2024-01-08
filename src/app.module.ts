@@ -29,7 +29,8 @@ import { CommentModule } from './modules/comment/comment.module';
       max: 100000,
       isGlobal: true,
     }),
-    PassportModule.register({ session: true })],
+    PassportModule.register({ session: true })
+  ],
   controllers: [AppController],
 })
 export class AppModule {}
