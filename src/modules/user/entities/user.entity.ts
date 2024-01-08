@@ -37,7 +37,6 @@ export class UserEntity extends BaseEntity {
 
     @ManyToMany(() => SeriesEntity)
     @JoinTable({ name: 'user_series' })
-    @Expose()
     series: SeriesEntity[] | null;
 
     @OneToMany(() => PostEntity, (posts) => posts.user)

@@ -9,7 +9,6 @@ import { OauthModule } from './modules/oauth/oauth.module';
 import { DatabaseModule } from './modules/database';
 import { CacheModule } from '@nestjs/cache-manager';
 import { CharacterModule } from './modules/character/character.module';
-import { BulletinModule } from './modules/bulletin/bulletin.module';
 import { PostModule } from './modules/post/post.module';
 import { CommentModule } from './modules/comment/comment.module';
 
@@ -22,7 +21,6 @@ import { CommentModule } from './modules/comment/comment.module';
     UserModule, 
     SeriesModule, 
     CharacterModule,
-    BulletinModule,
     PostModule,
     CommentModule,
     OauthModule, 

@@ -10,7 +10,7 @@ import { DatabaseModule } from '../database';
 @Module({
   imports: [TypeOrmModule.forFeature([PostRepository]), CqrsModule, DatabaseModule, UserModule],
   controllers: [PostController],
-  providers: [PostService],
+  providers: [PostService, PostRepository],
   exports: [PostService],
 })
 export class PostModule {}
