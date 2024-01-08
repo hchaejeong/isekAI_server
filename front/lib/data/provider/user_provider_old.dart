@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
-class UserProvider extends ChangeNotifier {
+class UserProvider_old extends ChangeNotifier {
   final GoogleSignIn _googleSignIn;
   GoogleSignInAccount? _googleAccount;
 
-  UserProvider() : _googleSignIn = GoogleSignIn(scopes: ['email']);
+  UserProvider_old() : _googleSignIn = GoogleSignIn(scopes: ['email']);
 
   GoogleSignInAccount? get googleAccount => _googleAccount;
 

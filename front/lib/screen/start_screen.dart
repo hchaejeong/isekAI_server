@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:front/component/google_sign_in_button.dart';
-import 'package:front/data/provider/user_provider.dart';
 import 'package:front/data/provider/user_provider_custom.dart';
 import 'package:front/screen/navigation_screen.dart';
 import 'package:front/util/utils.dart';
 import 'package:provider/provider.dart';
-import 'package:http/http.dart' as http;
 
 // ignore_for_file: prefer_const_constructors
 
 void signInWithGoogleAndNavigate(
-    BuildContext context, UserProviderCustom userProvider) async {
+    BuildContext context, UserProvider userProvider) async {
   await userProvider.signInWithGoogle();
 
   try {
@@ -152,8 +150,8 @@ class StartScreen extends StatelessWidget {
                 ),
               ),
               Container(
-                child: Consumer<UserProviderCustom>(
-                    builder: (context, userProvider, _) {
+                child:
+                    Consumer<UserProvider>(builder: (context, userProvider, _) {
                   return userProvider.googleAccount == null
                       ? Google_Sign_In_Button(
                           onPressed: () => signInWithGoogleAndNavigate(

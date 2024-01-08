@@ -1,0 +1,146 @@
+[33mcommit 063f221bc8d242acadcf6c3cae5423c9b31d74b0[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m
+Author: kyne0127 <benedict0127@naver.com>
+Date:   Tue Jan 9 04:10:43 2024 +0900
+
+    userprovider customed complete
+
+[33mcommit 05baedfa57346bc253cd7c644d0c4f32956aeb44[m
+Merge: 5513ace 26eacff
+Author: kyne0127 <benedict0127@naver.com>
+Date:   Tue Jan 9 04:09:36 2024 +0900
+
+    Merge branch 'main' of https://github.com/hchaejeong/isekAI
+
+[33mcommit 5513ace0563ea8a9c6aeaacb17d451937ca987e3[m
+Merge: ad3042c ffeb732
+Author: kyne0127 <benedict0127@naver.com>
+Date:   Sun Jan 7 19:42:23 2024 +0900
+
+    Merge branch 'main' of https://github.com/hchaejeong/isekAI
+
+[33mcommit 26eacff3615da5a30edad616b7604a3577aed218[m
+Author: hchaejeong <hchaejeong@kaist.ac.kr>
+Date:   Sun Jan 7 19:41:57 2024 +0900
+
+    firebase 사용하도록 수정
+
+[33mcommit ad3042cc4e5cc70b567c787e6ce01a5a7d5387cd[m
+Author: kyne0127 <benedict0127@naver.com>
+Date:   Sun Jan 7 01:31:44 2024 +0900
+
+    sign_in
+
+[33mcommit 48a5dff978be812b9216eb4279a84cfd0fedbc10[m
+Merge: 49b868c 9961de4
+Author: kyne0127 <benedict0127@naver.com>
+Date:   Sun Jan 7 01:31:02 2024 +0900
+
+    idk
+
+[33mcommit ffeb732d4b6108077b26734833b3e36a9e56a37d[m
+Author: hchaejeong <hchaejeong@kaist.ac.kr>
+Date:   Sun Jan 7 01:27:07 2024 +0900
+
+    google oauth client 연동
+
+[33mcommit 705c1193774b36ea5e5154d853a858ab2f8ef3f9[m
+Author: hchaejeong <hchaejeong@kaist.ac.kr>
+Date:   Sun Jan 7 01:26:58 2024 +0900
+
+    user api
+    
+    - update profile api
+
+[33mcommit 1c29a0221188acaf20ef570cba9a8172ef752e55[m
+Author: hchaejeong <hchaejeong@kaist.ac.kr>
+Date:   Sun Jan 7 00:07:19 2024 +0900
+
+    created by running build on the client side
+
+[33mcommit b3aee26f98d32587acdd83d4d95bf50407aac475[m
+Author: hchaejeong <hchaejeong@kaist.ac.kr>
+Date:   Sun Jan 7 00:06:49 2024 +0900
+
+    adding migrations and docker settings
+
+[33mcommit 47750b540b71afef6afc3a49457ec40403a9a4bf[m
+Author: hchaejeong <hchaejeong@kaist.ac.kr>
+Date:   Sun Jan 7 00:06:28 2024 +0900
+
+    adding all entities in database
+
+[33mcommit 49b868cc60889d22344747bbb12ff16d1e7011c7[m
+Author: kyne0127 <benedict0127@naver.com>
+Date:   Sat Jan 6 20:43:30 2024 +0900
+
+    "Nav bar implemented"
+
+[33mcommit 9961de4744f987dc83762bb742b4fbb76feeb501[m
+Author: hchaejeong <hchaejeong@kaist.ac.kr>
+Date:   Sat Jan 6 17:47:54 2024 +0900
+
+    additional info
+
+[33mcommit b7609d0edefd01bb3d7d4a045ba6e99798d28860[m
+Author: hchaejeong <hchaejeong@kaist.ac.kr>
+Date:   Sat Jan 6 17:47:27 2024 +0900
+
+    유저 모듈 수정
+
+[33mcommit ebdb90701f0882f5452bbd5f4a28e1f8c52036ab[m
+Author: hchaejeong <hchaejeong@kaist.ac.kr>
+Date:   Sat Jan 6 17:47:08 2024 +0900
+
+    postgresql 디비랑 연결
+
+[33mcommit 94f0927480a661e58cbf26e0621f984f906fadce[m
+Author: hchaejeong <hchaejeong@kaist.ac.kr>
+Date:   Sat Jan 6 17:45:24 2024 +0900
+
+    google login 연동
+    
+    - 처음으로 로그인한 유저는 new user로 리턴
+    - 기존 유저는 returning user로 리턴
+
+[33mcommit 362f1468afaeac0710db7e376be5cb073c9b47b0[m
+Merge: a4182b3 28214c0
+Author: kyne0127 <benedict0127@naver.com>
+Date:   Fri Jan 5 13:54:31 2024 +0900
+
+    Merge branch 'main' of https://github.com/hchaejeong/isekAI
+
+[33mcommit a4182b3e6b5abec60bb481de4d8ba2c7fe4a5171[m
+Author: kyne0127 <benedict0127@naver.com>
+Date:   Fri Jan 5 13:54:25 2024 +0900
+
+    LF will be replaced by CRLF
+
+[33mcommit 28214c0c541f1e13033db1ca59e3790c0757beb6[m
+Author: hchaejeong <hchaejeong@kaist.ac.kr>
+Date:   Fri Jan 5 13:52:42 2024 +0900
+
+    first
+
+[33mcommit 119cfcee516860cd9754217c8085d29cd90f48a1[m
+Author: hchaejeong <hchaejeong@kaist.ac.kr>
+Date:   Fri Jan 5 02:58:59 2024 +0900
+
+    nestjs
+
+[33mcommit b6fec1f45150e04b7f73c203e2d4bf8a912aced1[m
+Author: hchaejeong <hchaejeong@kaist.ac.kr>
+Date:   Fri Jan 5 02:35:19 2024 +0900
+
+    deleted flutter
+
+[33mcommit a92224c5115ea7d72e7310645cc863fdc6ddeceb[m
+Author: hchaejeong <hchaejeong@kaist.ac.kr>
+Date:   Fri Jan 5 02:22:52 2024 +0900
+
+    first commit
+
+[33mcommit a20efa98dd5e16415ba9f494f23eedd181db0f7b[m
+Author: hchaejeong <hchaejeong@kaist.ac.kr>
+Date:   Fri Jan 5 02:18:48 2024 +0900
+
+    first commit

@@ -3,11 +3,11 @@ import 'package:http/http.dart' as http;
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:flutter/foundation.dart';
 
-class UserProviderCustom extends ChangeNotifier {
+class UserProvider extends ChangeNotifier {
   final GoogleSignIn _googleSignIn;
   GoogleSignInAccount? _googleAccount;
 
-  UserProviderCustom()
+  UserProvider()
       : _googleSignIn = GoogleSignIn(
             scopes: ['email'],
             clientId:
