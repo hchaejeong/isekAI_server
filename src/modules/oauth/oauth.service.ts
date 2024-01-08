@@ -34,7 +34,7 @@ constructor(@Inject(CACHE_MANAGER) private cacheManager: Cache, private userRepo
             profileIconUrl: profileIcon,
         });
     }
-    return user;
+    return JSON.stringify(user);
   }
 
   public async handleGoogleLogin(req: Request) {
