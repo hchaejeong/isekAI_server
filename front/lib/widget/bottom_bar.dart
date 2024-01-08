@@ -1,59 +1,51 @@
 import 'package:flutter/material.dart';
-// ignore_for_file: prefer_const_constructors
+import 'package:google_nav_bar/google_nav_bar.dart';
 
-class Bottom extends StatelessWidget {
+class Bottom_Tab extends StatefulWidget {
+  final Function(int) onTabChange;
+
+  Bottom_Tab({required this.onTabChange});
+
+  @override
+  _BottomTabState createState() => _BottomTabState();
+}
+
+class _BottomTabState extends State<Bottom_Tab> {
+  int _selectedIndex = 0; // <-- Revision: Define _selectedIndex here
+
   @override
   Widget build(BuildContext context) {
     return Container(
       color: Colors.black,
-      child: Container(
-        height: 50,
-        child: TabBar(
-          labelColor: Colors.white,
-          unselectedLabelColor: Colors.white60,
-          indicatorColor: Colors.transparent,
-          tabs: <Widget>[
-            Tab(
-              icon: Icon(
-                Icons.home,
-                size: 18,
-              ),
-              child: Text(
-                '홈',
-                style: TextStyle(fontSize: 9),
-              ),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 5),
+        child: GNav(
+          backgroundColor: Colors.black,
+          color: Colors.white,
+          activeColor: Colors.black,
+          tabBackgroundColor: Colors.grey.shade400,
+          gap: 8,
+          padding: const EdgeInsets.all(16),
+          tabs: const [
+            GButton(icon: Icons.home, text: 'Home'),
+            GButton(icon: Icons.search, text: 'Search'),
+            GButton(
+              icon: Icons.import_contacts,
+              text: 'Library',
             ),
-            Tab(
-              icon: Icon(
-                Icons.search,
-                size: 18,
-              ),
-              child: Text(
-                '검색',
-                style: TextStyle(fontSize: 9),
-              ),
-            ),
-            Tab(
-              icon: Icon(
-                Icons.save_alt,
-                size: 18,
-              ),
-              child: Text(
-                '저장한 콘텐츠 목록',
-                style: TextStyle(fontSize: 9),
-              ),
-            ),
-            Tab(
-              icon: Icon(
-                Icons.list,
-                size: 18,
-              ),
-              child: Text(
-                '더보기',
-                style: TextStyle(fontSize: 9),
-              ),
+            GButton(
+              icon: Icons.person,
+              text: 'Profile',
             ),
           ],
+          selectedIndex: _selectedIndex,
+          onTabChange: (index) {
+            setState(() {
+              _selectedIndex =
+                  index; // <-- Revision: Update _selectedIndex here
+            });
+            widget.onTabChange(index);
+          },
         ),
       ),
     );
