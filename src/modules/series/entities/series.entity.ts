@@ -1,5 +1,5 @@
+import { PostEntity } from "@src/modules/post/entities/post.entity";
 import { Exclude, Expose } from "class-transformer";
-import { BulletinEntity } from "src/modules/bulletin/entities/bulletin.entity";
 import { CharacterEntity } from "src/modules/character/entities/character.entity";
 import { UserEntity } from "src/modules/user/entities/user.entity";
 import { BaseEntity, BeforeInsert, Column, Entity, JoinColumn, JoinTable, ManyToMany, ManyToOne, OneToMany, OneToOne, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
@@ -48,9 +48,9 @@ export class SeriesEntity extends BaseEntity {
     @Expose()
     seriesImage: string;
 
-    @OneToOne(() => BulletinEntity, { cascade: true })
-    @JoinColumn({ name: 'bulletin_id' })
-    bulletin: BulletinEntity;
+    @OneToMany(() => PostEntity, (post) => post.series)
+    @Exclude({ toPlainOnly: true })
+    posts: PostEntity[] | null;
     
     @ManyToMany(() => UserEntity)
     @JoinTable({ name: 'user_series' })

@@ -46,15 +46,6 @@ export class CreateSeries1704545601200 implements MigrationInterface {
                 ],
               }),
         );
-
-        await queryRunner.createForeignKeys('series', [
-            new TableForeignKey({
-                columnNames: ['bulletin_id'],
-                referencedColumnNames: ['id'],
-                referencedTableName: 'bulletin',
-                onDelete: 'CASCADE',
-            }),
-        ]);
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {

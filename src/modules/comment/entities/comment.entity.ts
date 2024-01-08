@@ -24,11 +24,19 @@ export class CommentEntity extends BaseEntity {
     @Expose()
     likes: number;
 
-    @ManyToOne(() => PostEntity, (post) => post.comment)
+    @ManyToOne(() => PostEntity, (post) => post.comments)
     @Exclude({ toPlainOnly: true })
     post: PostEntity | null;
+
+    @Column()
+    @Expose()
+    postId: string;
 
     @ManyToOne(() => UserEntity, (user) => user.comments)
     @Exclude({ toPlainOnly: true })
     user: UserEntity;
+
+    @Column()
+    @Expose()
+    userId: string;
 }
