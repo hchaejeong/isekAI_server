@@ -12,6 +12,7 @@ import { JwtPayloadType } from '@src/utils/types/jwt-payload.type';
 export class OauthService {
 constructor(@Inject(CACHE_MANAGER) private cacheManager: Cache, private userRepository: UserRepository, @Inject('GOOGLE_CLIENT_ID') private readonly googleClientId: string, private jwtService: JwtService) {}
 
+/*
   public async validateGoogleIdToken(idToken: string): Promise<any> {
     const client = new OAuth2Client(this.googleClientId);
 
@@ -75,7 +76,64 @@ constructor(@Inject(CACHE_MANAGER) private cacheManager: Cache, private userRepo
       throw new Error('Invalid Google ID token');
     }
   }
+  */
 
+  async validateOAuthLogin(accessToken: string, refreshToken: string, profile: any): Promise<any> {
+    try {
+      const { id, emails, photos, name } = profile;
+
+      const user = await this.userRepository.findOne({ where: { id }});
+
+      if (!user) {
+        const newUser = await this.userRepository.save(
+          this.userRepository.create({
+            email: emails[0].value,
+            name: name.givenName + ' ' + name.familyName,
+            profileIconUrl: photos[0].value,
+            id: id,
+          }),
+        );
+        
+        const jwtPayload:Omit<JwtPayloadType, 'iat' | 'exp'> = {
+          id: newUser.id,
+          email: newUser.email,
+        };
+
+        const jwtToken = await this.jwtService.signAsync(jwtPayload);
+
+        return {
+          email: newUser.email,
+          firstName: name.givenName,
+          lastName: name.familyName,
+          profileIcon: photos[0].value,
+          accessToken,
+          jwtToken,
+          isNewUser: true,
+        };
+      }
+
+      const jwtPayload:Omit<JwtPayloadType, 'iat' | 'exp'> = {
+        id: user.id,
+        email: user.email,
+      };
+      const jwtToken = await this.jwtService.signAsync(jwtPayload);
+
+      return {
+        email: user.email,
+        firstName: name.givenName,
+        lastName: name.familyName,
+        profileIcon: photos[0].value,
+        accessToken,
+        jwtToken,
+        isNewUser: false,
+      };
+    } catch (error) {
+      console.error('Error validating OAuth login', error.message);
+      throw new Error('Invalid OAuth login');
+    }
+  }
+
+  /*
   public async validateGoogleLogin(email: string, firstName: string, lastName: string, profileIcon: string, accessToken: string) {
     // Validate or create a new user based on the Google profile    
     const userTempId = uuidv4();
@@ -121,4 +179,5 @@ constructor(@Inject(CACHE_MANAGER) private cacheManager: Cache, private userRepo
     console.log(googleUser);
     return (googleUser);
   }
+  */
 }

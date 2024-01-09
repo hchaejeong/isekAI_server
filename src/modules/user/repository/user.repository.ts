@@ -7,10 +7,11 @@ import { UserEntity } from "../entities/user.entity";
 export class UserRepository {
     constructor(@InjectRepository(UserEntity) private repository: Repository<UserEntity>,) {}
 
-    create(args: { email: string, name: string, profileIconUrl: string }): UserEntity {
-        const { email, name, profileIconUrl } = args;
+    create(args: { id: string, email: string, name: string, profileIconUrl: string }): UserEntity {
+        const { id, email, name, profileIconUrl } = args;
 
         return this.repository.create({
+            id,
             email,
             name,
             profileIconUrl,
