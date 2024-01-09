@@ -4,8 +4,9 @@ import { UpdateProfileRequestDto } from './dtos/update-profile-request.dto';
 import { Request } from 'express';
 import { UserEntity } from './entities/user.entity';
 import { AuthGuard } from '@nestjs/passport';
-import { GetAllUserInfoResponseDto } from './dtos/get-all-user-info-response.dto';
+import { FindMeResponseDto } from './dtos/find-me-response.dto';
 import { AddSeriesToUserRequestDto } from './dtos/add-series-to-user-request.dto';
+import { JwtPayloadType } from '@src/utils/types/jwt-payload.type';
 
 @Controller('user')
 export class UserController {
@@ -36,6 +37,18 @@ export class UserController {
     }
 
     return await this.userService.getMySeries({ id });
+  }
+
+  @UseGuards(AuthGuard('jwt'))
+  @Get('me')
+  public async findMe(@Req() request: Request): Promise<FindMeResponseDto> {
+    const jwtPayload: JwtPayloadType = request.user as JwtPayloadType;
+
+    const { user } = await this.userService.findMe(jwtPayload);
+
+    return {
+      user,
+    };
   }
 
   @UseGuards(AuthGuard('jwt'))

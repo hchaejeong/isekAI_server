@@ -7,7 +7,7 @@ import { PostEntity } from '../../entities/post.entity';
 
 
 @QueryHandler(GetPostQuery)
-export class GetOrganizationHandler implements IIQeryHandler<GetPostQuery> {
+export class GetPostHandler implements IIQeryHandler<GetPostQuery> {
   constructor(private postRepository: PostRepository) {}
 
   execute(query: GetPostQuery): Promise<PostEntity | null> {

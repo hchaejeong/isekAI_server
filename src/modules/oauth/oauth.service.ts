@@ -82,7 +82,7 @@ constructor(@Inject(CACHE_MANAGER) private cacheManager: Cache, private userRepo
     try {
       const { id, emails, photos, name } = profile;
 
-      const user = await this.userRepository.findOne({ where: { id }});
+      const user = await this.userRepository.findOne({ where: { email: emails[0].value }});
 
       if (!user) {
         const newUser = await this.userRepository.save(
@@ -90,7 +90,6 @@ constructor(@Inject(CACHE_MANAGER) private cacheManager: Cache, private userRepo
             email: emails[0].value,
             name: name.givenName + ' ' + name.familyName,
             profileIconUrl: photos[0].value,
-            id: id,
           }),
         );
         
@@ -128,7 +127,7 @@ constructor(@Inject(CACHE_MANAGER) private cacheManager: Cache, private userRepo
         isNewUser: false,
       };
     } catch (error) {
-      console.error('Error validating OAuth login', error.message);
+      console.log('Error validating OAuth login', error.message);
       throw new Error('Invalid OAuth login');
     }
   }

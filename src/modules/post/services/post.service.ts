@@ -1,8 +1,6 @@
 import { Injectable, UnauthorizedException, UnprocessableEntityException } from '@nestjs/common';
 import { PostRepository } from '../repositories/post.repository';
 import { PostEntity } from '../entities/post.entity';
-import { TransactionService } from '@src/modules/database';
-import { UserRepository } from '@src/modules/user';
 import { QueryBus } from '@nestjs/cqrs';
 import { GetSeriesQuery } from '@src/modules/series/queries/impl/get-series.query';
 import { GetUserQuery } from '@src/modules/user/queries/impl/get-user.query';
@@ -99,12 +97,14 @@ export class PostService {
             throw new UnprocessableEntityException();
         }
 
-        const post = await this.postRepository.create({
-            title,
-            content,
-            series,
-            user,
-        });
+        const post = await this.postRepository.save(
+            this.postRepository.create({
+                title,
+                content,
+                series,
+                user,
+            }),
+        );
 
         return post;
     }

@@ -1,4 +1,4 @@
-import { Injectable, UnauthorizedException } from '@nestjs/common';
+import { Injectable, Req, UnauthorizedException } from '@nestjs/common';
 import { UserRepository } from '../repository/user.repository';
 import { SeriesEntity } from '@src/modules/series/entities/series.entity';
 import { UserEntity } from '../entities/user.entity';
@@ -57,5 +57,22 @@ export class UserService {
 
       const updatedUser = await this.userRepository.update(id, { series: [...(user.series || []), ...seriesIds.map(id => ({ id }))] });
       return this.userRepository.findOne({ where: { id }});
+    }
+
+    async findMe(args?: JwtPayloadType): Promise<{ user: UserEntity | null }> {
+      if (!args) {
+        return {
+          user: null,
+        };
+      }
+
+      const { id } = args;
+      const user = await this.userRepository.findOne({
+        where: {
+          id,
+        },
+      });
+
+      return { user };
     }
 }

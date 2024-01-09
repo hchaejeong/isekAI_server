@@ -15,10 +15,11 @@ export class PostController {
   @Get('/all')
   public async getAllPostInfo(@Param('seriesId') seriesId): Promise<GetAllPostInfoResponseDto> {
     const posts = await this.postService.getAllPosts({ seriesId });
+    const ids = posts.map((post) => post.id);
     const titles = posts.map((post) => post.title);
     const likes = posts.map((post) => post.likes);
 
-    return { titles, likes };
+    return { ids, titles, likes };
   }
 
   @Get(':postId')

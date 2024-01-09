@@ -28,11 +28,12 @@ export class OauthController {
   @Get('google/redirect')
   @UseGuards(AuthGuard('google'))
   async googleLoginCallback(@Req() req, @Res() res) {
-    const jwt: string = req.user.jwt;
+    console.log(req.user);
+    const jwt: string = req.user.jwtToken;
     if (jwt) {
-      res.redirect('http://localhost:8888/login/succes/' + jwt);
+      res.status(200).json({ jwtToken: jwt });
     } else {
-      res.redirect('http://localhost:8888/login/failure');
+      res.status(500).json({ error: 'Login failed' });
     }
   }
 
