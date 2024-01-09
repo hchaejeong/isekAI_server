@@ -28,7 +28,7 @@ export class PostController {
     return { post };
   }
 
-  @UseGuards(AuthGuard('google'))
+  @UseGuards(AuthGuard('jwt'))
   @Post('/create')
   public async createPost(@Body() body: CreatePostRequestDto, @Param('seriesId') seriesId, @Req() req: Request): Promise<CreatePostResponseDto> {
     const { title, content } = body;

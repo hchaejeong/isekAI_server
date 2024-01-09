@@ -40,7 +40,7 @@
     "google-auth-library": "^9.4.1",
     "mo": "^1.7.3",
     "mydatabase": "^1.0.1",
-    "openai": "^3.3.0",
+    "openai": "^4.24.2",
     "passport": "^0.7.0",
     "passport-google-oauth20": "^2.0.0",
     "passport-jwt": "^4.0.1",

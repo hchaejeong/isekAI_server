@@ -11,6 +11,7 @@ export class OauthController {
   @UseGuards(AuthGuard('google'))
   async googleLogin() {}
 
+  @UseGuards(AuthGuard('google'))
   @Post('google/verify')
   async signInWithGoogle(@Body() { idToken }: { idToken: string }) {
     // Validate the Google ID token and extract user information

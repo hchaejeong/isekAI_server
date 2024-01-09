@@ -6,7 +6,7 @@ import { SeriesRepository } from '../../repositories/series.repository';
 import { SeriesEntity } from '../../entities/series.entity';
 
 @QueryHandler(GetSeriesQuery)
-export class GetOrganizationHandler implements IIQeryHandler<GetSeriesQuery> {
+export class GetSeriesHandler implements IIQeryHandler<GetSeriesQuery> {
   constructor(private seriesRepository: SeriesRepository) {}
 
   execute(query: GetSeriesQuery): Promise<SeriesEntity | null> {
