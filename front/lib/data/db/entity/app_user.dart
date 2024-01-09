@@ -1,33 +1,47 @@
 class AppUser {
   String id;
-  String name;
-  String profilePhotoPath;
+  String firstName; // Updated field name
+  String lastName;
+  String profileIcon; // Updated field name
+  String accessToken;
+  bool isNewUser;
 
   AppUser({
     required this.id,
-    required this.name,
-    required this.profilePhotoPath,
+    required this.firstName,
+    required this.lastName,
+    required this.profileIcon,
+    required this.accessToken,
+    required this.isNewUser,
   });
 
   AppUser.fromSnapshot(DocumentSnapshot snapshot)
       : id = snapshot.id,
-        name = snapshot.name,
-        profilePhotoPath = snapshot.profilePhotoPath;
+        firstName = snapshot.firstName,
+        lastName = snapshot.lastName,
+        profileIcon = snapshot.profileIcon,
+        accessToken = snapshot.accessToken,
+        isNewUser = snapshot.isNewUser;
 
   Map<String, dynamic> toMap() {
     return {
       'id': id,
-      'name': name,
-      'profile_photo_path': profilePhotoPath,
+      'firstName': firstName,
+      'lastName': lastName,
+      'profile_icon': profileIcon,
+      'accessToken': accessToken,
+      'isNewUser': isNewUser,
     };
   }
 }
 
 class DocumentSnapshot {
   String get id => data['id'];
-  String get name => data['name'];
-  int get age => data['age'];
-  String get profilePhotoPath => data['profile_photo_path'];
+  String get firstName => data['firstName']; // Updated field name
+  String get lastName => data['lastName'];
+  String get profileIcon => data['profile_icon']; // Updated field name
+  String get accessToken => data['accessToken'];
+  bool get isNewUser => data['isNewUser'];
 
   final Map<String, dynamic> data;
 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:front/component/google_sign_in_button.dart';
-import 'package:front/data/provider/user_provider_custom.dart';
+import 'package:front/data/provider/user_provider.dart';
 import 'package:front/screen/navigation_screen.dart';
 import 'package:front/util/utils.dart';
 import 'package:provider/provider.dart';

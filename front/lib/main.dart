@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:front/data/provider/user_provider_custom.dart';
+import 'package:front/data/provider/user_provider.dart';
 import 'package:front/screen/navigation_screen.dart';
 import 'package:front/screen/sign_in_checker.dart';
 import 'package:front/screen/start_screen.dart';
