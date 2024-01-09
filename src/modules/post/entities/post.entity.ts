@@ -1,5 +1,5 @@
+import { SeriesEntity } from "@src/modules/series/entities/series.entity";
 import { Exclude, Expose } from "class-transformer";
-import { BulletinEntity } from "src/modules/bulletin/entities/bulletin.entity";
 import { CommentEntity } from "src/modules/comment/entities/comment.entity";
 import { UserEntity } from "src/modules/user/entities/user.entity";
 import { BaseEntity, Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
@@ -31,17 +31,17 @@ export class PostEntity extends BaseEntity {
     @Expose()
     likes: number;
 
-    @ManyToOne(() => BulletinEntity, (bulletin) => bulletin.posts)
+    @ManyToOne(() => SeriesEntity, (series) => series.posts)
     @Exclude({ toPlainOnly: true })
-    bulletin: BulletinEntity | null;
+    series: SeriesEntity | null;
 
     @Column()
     @Expose()
-    bulletinId: string;
+    seriesId: string;
 
     @OneToMany(() => CommentEntity, (comment) => comment.post)
     @Exclude({ toPlainOnly: true })
-    comment: CommentEntity[] | null;
+    comments: CommentEntity[] | null;
 
     @ManyToOne(() => UserEntity, (user) => user.posts)
     @Exclude({ toPlainOnly: true })

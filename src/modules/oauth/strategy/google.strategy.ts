@@ -15,14 +15,12 @@ export class GoogleStrategy extends PassportStrategy(Strategy, 'google') {
   }
 
   async validate(accessToken: string, refreshToken: string, profile: any, done: VerifyCallback): Promise<any> {
-    const { name, emails, photos } = profile;
-    const user = {
-      email: emails[0].value,
-      firstName: name.givenName,
-      lastName: name.familyName,
-      profileIcon: photos[0].value,
-      accessToken,
-    };
-    done(null, user);
+    try {
+      const user = await this.oauthService.validateOAuthLogin(accessToken, refreshToken, profile);
+      done(null, user);
+    } catch (err) {
+      console.error('Error validating Google OAuth login:', err.message);
+      done(err, false);
+    }
   }
 }

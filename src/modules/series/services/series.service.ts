@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { SeriesRepository } from '../repositories/series.repository';
 import { SeriesCategory, SeriesEntity } from '../entities/series.entity';
 
@@ -13,18 +13,20 @@ export class SeriesService {
             where: {
                 id: seriesId,
             },
+            relations: ['characters'],
         });
 
         return { series };
     }
 
-    async getTitles(args: { category: SeriesCategory }): Promise<string[]> {
+    async getAllSeries(args: { category: SeriesCategory }): Promise<SeriesEntity[]> {
         const { category } = args;
 
         const seriesEntities = await this.seriesRepository.find({
             where: { category },
         });
 
-        return seriesEntities.map((series) => series.name);
+        return seriesEntities;
     }
+
 }

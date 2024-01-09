@@ -15,6 +15,13 @@ export class CharacterEntity extends BaseEntity {
         length: 50,
     })
     @Expose()
+    name: string;
+
+    @Column({
+        type: 'varchar',
+        length: 50,
+    })
+    @Expose()
     introduced: string;
 
     @Column({
@@ -41,4 +48,8 @@ export class CharacterEntity extends BaseEntity {
     @ManyToOne(() => SeriesEntity, (series) => series.characters)
     @Exclude({ toPlainOnly: true })
     series: SeriesEntity | null;
+
+    @Column()
+    @Expose()
+    seriesId: string;
 }

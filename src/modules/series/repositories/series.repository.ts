@@ -5,7 +5,7 @@ import { SeriesEntity } from "../entities/series.entity";
 
 @Injectable()
 export class SeriesRepository {
-    constructor(@InjectRepository(SeriesRepository) private repository: Repository<SeriesEntity>,) {}
+    constructor(@InjectRepository(SeriesEntity) private repository: Repository<SeriesEntity>,) {}
 
     save(...args: Parameters<Repository<SeriesEntity>['save']>): ReturnType<Repository<SeriesEntity>['save']> {
         return this.repository.save(...args);
