@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "168955661710",
+    "project_id": "isekai-app-410302",
+    "storage_bucket": "isekai-app-410302.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:168955661710:android:2ba3fa44f3d9bb5be6a8df",
+        "android_client_info": {
+          "package_name": "com.example.front"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "168955661710-6q7c4j4e3qjuhgf7ih56ul0mkc52e7po.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA9AhJflOWfA5uKWHoFcOhQ-fNedgN5tW8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "168955661710-6q7c4j4e3qjuhgf7ih56ul0mkc52e7po.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
