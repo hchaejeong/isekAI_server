@@ -67,7 +67,7 @@ Make sure to keep it under 500 character limit for brevity and impact.
   <td  align="center"><a href="mailto:.ac.kr"></a></td>
      </tr>
       <tr width="100%">
-       <td  align="center"><p>Backend NestJS APIs</p><p>Prompt Engineering for OpenAI</p><p>Postgresql Databse Managing</p></td>
+       <td  align="center"><p>Backend NestJS APIs</p><p>Prompt Engineering for OpenAI</p><p>Postgresql Database Managing</p></td>
        <td  align="center"><p>Design</p><p>Frontend Flutter</p></td>
      </tr>
   </table>
