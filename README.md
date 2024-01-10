@@ -4,9 +4,9 @@
 *2023 Winter Madcamp Project* <br/>
 
 ## 🖥 Project Introduction
-Our project aims to 
+Our application provides users a private place to explore popular movie, books, anime, or drama series and easily understand its main plot, main characters and relationships. We apply the OpenAI API in order to generate a concise summary of each sequel of the selected series as well as generating a list of relationships between a selected character and all other characters that appear in the series. Each user can now be a part of a bulletin where they can share posts and ideas with other users also interested in these series.
 
-##  APK file - google drive
+##  APK file
 
 ## ⚙️ Environment
 <img src="https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white"/> <img src="https://img.shields.io/badge/Nest.js-339933?style=for-the-badge&logo=Nest.js&logoColor=white"/> ![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=Git&logoColor=white) ![Github](https://img.shields.io/badge/Github-181717?style=for-the-badge&logo=Github&logoColor=white) <img src="https://img.shields.io/badge/PostgreSQL-4479A1?style=for-the-badge&logo=PostgreSQL&logoColor=white"/> <img src="https://img.shields.io/badge/Visual Studio Code-007ACC?style=for-the-badge&logo=Visual Studio Code&logoColor=white"/> ![Notion](https://img.shields.io/badge/Notion-808080?style=for-the-badge&logo=Notion&logoColor=white)
