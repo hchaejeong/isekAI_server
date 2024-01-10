@@ -40,7 +40,18 @@ Our project aims to
 ||||
 
 
-### Prompt Engineering for OpenAI
+## Prompt Engineering for OpenAI
+~~~
+📖 You have just finished reading the {category} {series name} by {author}. Please provide a concise and engaging summary of this entire {category}. Capture the important events in the plot. Your summary should be informative and compelling, giving someone who hasn't read the book a clear understanding of its contents. Feel free to include your personal thoughts or reactions if you think it adds value to the summary.
+
+Make sure to keep it under 500 character limit for brevity and impact.
+~~~
+> Example prompt for generating the summary of each book in a series through OpenAI
+
+~~~
+👯 Provide a detailed summary of the relationships between the selected character {character name} and each of the characters {remaining character names} in {series name}. Present the information in a list format, highlighting key aspects, interactions, and developments in their relationships. Include any significant events or plot points that contribute to the dynamics between the selected character and others. Please generate a comprehensive overview of these relationships based on the context of the {series name}.
+~~~
+>Prompt for generating the character relationship summary through OpenAI
 
 
 ## 🧑‍🤝‍🧑 Contributors
